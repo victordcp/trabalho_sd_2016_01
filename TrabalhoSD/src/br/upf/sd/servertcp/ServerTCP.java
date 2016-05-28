@@ -5,17 +5,33 @@
  */
 package br.upf.sd.servertcp;
 
+import java.io.ObjectInputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 /**
  *
  * @author fabricio
  */
 public class ServerTCP {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws Exception{
+        int porta = 2010;
+        int recebido;
+        int exit = 1;        
+        
+        ServerSocket ss = new ServerSocket(porta);
+        System.out.println("server socket criado");
+        Socket s = ss.accept();
+        System.out.println("conexao aceita");
+        
+        while (exit == 1) {
+            System.out.println("entrou no while");
+            ObjectInputStream recebe = new ObjectInputStream(s.getInputStream());
+            recebido = recebe.readInt();
+            System.out.println("recebeu valor: " + recebido);
+            
+            
+        }
     }
-    
 }
