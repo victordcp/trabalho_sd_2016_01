@@ -5,7 +5,10 @@
  */
 package br.upf.sd.servertcp;
 
+import java.io.EOFException;
+import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -13,25 +16,28 @@ import java.net.Socket;
  *
  * @author fabricio
  */
-public class ServerTCP {
+public class ServerTCP{
+    
 
-    public static void main(String[] args) throws Exception{
-        int porta = 2010;
-        int recebido;
-        int exit = 1;        
-        
-        ServerSocket ss = new ServerSocket(porta);
-        System.out.println("server socket criado");
-        Socket s = ss.accept();
-        System.out.println("conexao aceita");
-        
-        while (exit == 1) {
-            System.out.println("entrou no while");
-            ObjectInputStream recebe = new ObjectInputStream(s.getInputStream());
-            recebido = recebe.readInt();
-            System.out.println("recebeu valor: " + recebido);
-            
-            
+    public static void main(String[] args) {
+        int porta = 2006;
+        try {
+            ServerSocket servidor = new ServerSocket(porta);
+            System.out.println("servidor ouvindo a porta 2006");
+            while (true) {
+                Socket cliente = servidor.accept();
+                System.out.println("cliente conectado: " + cliente.getInetAddress().getHostAddress());
+                
+                new ThreadCliente(cliente).start();
+
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
         }
+
     }
+    
+   //http://www.devmedia.com.br/java-sockets-criando-comunicacoes-em-java/9465
+    
 }

@@ -34,7 +34,7 @@ public class CarroDAO extends ConnectionFactory {
             rs = pstmt.executeQuery();
 
             while (rs.next()) {
-                //Carro carro1 = new Carro(0, "marca", "modelo", Integer.SIZE, Float.NaN, Float.NaN, Character.MIN_VALUE);
+                Carro carro1 = new Carro(0, "marca", "modelo", Integer.SIZE, Float.NaN, Float.NaN, Character.MIN_VALUE);
             }
 
         } catch (Exception e) {
