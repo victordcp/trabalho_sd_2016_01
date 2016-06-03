@@ -18,7 +18,7 @@ public class Carro {
     private Integer ano;
     private Float potencia;
     private Float carga;
-    private Character complemento;
+    private String complemento;
 
     public Carro() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -48,7 +48,7 @@ public class Carro {
         return carga;
     }
 
-    public Character getComplemento() {
+    public String getComplemento() {
         return complemento;
     }
 
@@ -76,11 +76,11 @@ public class Carro {
         this.carga = carga;
     }
 
-    public void setComplemento(Character complemento) {
+    public void setComplemento(String complemento) {
         this.complemento = complemento;
     }
 
-    public Carro(int codigo, String marca, String modelo, Integer ano, Float potencia, Float carga, Character complemento) {
+    public Carro(int codigo, String marca, String modelo, Integer ano, Float potencia, Float carga, String complemento) {
         this.codigo = codigo;
         this.marca = marca;
         this.modelo = modelo;
